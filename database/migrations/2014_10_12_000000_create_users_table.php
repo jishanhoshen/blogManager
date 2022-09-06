@@ -22,7 +22,9 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->integer('block')->default(0);
-            $table->string('google_id')->nullable();
+            $table->string('social_id')->nullable();
+            $table->string('provider')->nullable();
+            $table->string('avatar')->nullable();
         });
     }
 

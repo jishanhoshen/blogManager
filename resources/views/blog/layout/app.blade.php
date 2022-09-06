@@ -9,8 +9,7 @@
     <title>@yield('title')</title>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet">
-
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css')}}" />
+    <!-- <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css')}}" /> -->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/theme.css')}}" />
 
 </head>
@@ -46,6 +45,19 @@
                             <input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
                             <button class="search-close"><i class="fa fa-times"></i></button>
                         </div>
+                        @guest
+                        <a href="{{ route('login') }}">login</a>
+                        <a href="{{ route('register') }}">registration</a>
+                        @else
+                        {{ Str::title(Auth::user()->name) }}
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();  document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                        @endguest
                     </div>
 
                 </div>
