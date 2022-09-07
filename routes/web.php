@@ -29,7 +29,10 @@ Route::get('/clear', function() {
     Artisan::call('view:clear');
     return "Cleared!";
     });
-
+Route::get('privacy', function ()
+{
+    return view('blog.policy');
+});
 Route::get('test', function () {
     echo '<pre>';
     print_r(Auth::user());
